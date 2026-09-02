@@ -1,0 +1,11 @@
+{
+  "name": "com.countersignatory/mcp",
+  "description": "Live spot prices for verified human judgment, sign-off and notarisation. Quote a task before committing: Check, Consensus, Countersign, Seal.",
+  "websiteUrl": "https://countersignatory.com",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://countersignatory.com/mcp"
+    }
+  ]
+}
