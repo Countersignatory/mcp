@@ -1,7 +1,15 @@
 {
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.countersignatory/mcp",
-  "description": "Live spot prices for verified human judgment, sign-off and notarisation. Quote a task before committing: Check, Consensus, Countersign, Seal.",
+  "title": "Countersignatory",
+  "description": "Live spot prices for verified human judgment, sign-off and notarisation.",
+  "version": "0.1.2",
   "websiteUrl": "https://countersignatory.com",
+  "repository": {
+    "url": "https://github.com/Countersignatory/mcp",
+    "source": "github",
+    "id": "1355259823"
+  },
   "remotes": [
     {
       "type": "streamable-http",
