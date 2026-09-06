@@ -12,26 +12,36 @@ Countersignatory publishes the going rate for a human minute: a live spot index 
 
 ## Tools
 
+Three tools are served. The descriptions below are exactly what the endpoint returns from `tools/list`.
+
 **countersignatory_quote**
 
-Get the current spot price for verified human input on a task before committing to it: a screened human check, a consensus of several humans, an accountable sign-off by a named register-verified professional, or a regulated notarial act. Use when an agent needs human judgment, verification, approval or a signature and needs the cost and turnaround first. Returns an indicative unit price, a band, the multipliers applied, alternatives that would clear a lower maximum bid, and the implied rate per human minute. Quotes are indicative: the live market has not yet opened and no task is fulfilled.
+Get the current spot price to have a verified human check, agree on, sign off or notarise something. Use when an agent needs human judgment, accountability or a signature, and needs to know the cost and time before committing. Returns an indicative price, a band, what would clear at a lower bid, and the implied rate per human minute.
 
 Parameters: `task_type`, `sla_seconds`, `tier`, `consensus_n`, `unassisted`, `jurisdiction`, `max_price`.
 
+**countersignatory_register_interest**
+
+Record that the quoted price would clear your use case and you would buy at it. Takes the quote_id from a countersignatory_quote response. This is the demand signal that decides which markets open first.
+
+Parameters: `quote_id`, `would_pay`, `note`.
+
 **countersignatory_spot_index**
 
-The public Countersignatory Spot Index: current indicative rates for verified human judgment and accountable sign-off in every open market (Check, Consensus, Countersign, Seal), with urgency and off-hours multipliers, the published wage floor, and the derivation of every seeded number.
+The public Countersignatory Spot Index: the going rate for verified human judgment by market, with the urgency and off-hours multipliers, the published wage floor, and the derivation of every seeded number.
 
 ## Example calls
 
-    # A free key, instant, no approval
-    curl -s -X POST https://countersignatory.com/v1/keys -H 'content-type: application/json' -d '{}'
+```bash
+# A free key, instant, no approval
+curl -s -X POST https://countersignatory.com/v1/keys -H 'content-type: application/json' -d '{}'
 
-    # Price a three-human consensus judgment, needed within the hour, max bid $5
-    curl -s -X POST https://countersignatory.com/v1/quotes \
-      -H 'content-type: application/json' \
-      -d '{"task_type":"judgment","tier":"consensus","consensus_n":3,"sla_seconds":3600,"max_price":5}'
+# Price a three-human consensus judgment, needed within the hour, max bid $5
+curl -s -X POST https://countersignatory.com/v1/quotes \
+  -H 'content-type: application/json' \
+  -d '{"task_type":"judgment","tier":"consensus","consensus_n":3,"sla_seconds":3600,"max_price":5}'
+```
 
-Methodology: https://countersignatory.com/v1/methodology
+Methodology: https://countersignatory.com/methodology
 
-Built by Countersignatory Ltd. The launch essay, "The going rate for a human minute," is at countersignatory.com.
+Built by Countersignatory Ltd. The launch essay, "The going rate for a human minute," is at https://countersignatory.com/essay.
